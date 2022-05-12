@@ -1,0 +1,62 @@
+## Prerequisites
+- Linux or macOS
+- Python 3
+- CPU or NVIDIA GPU + CUDA CuDNN
+
+## Setting enviroments(Installation)
+
+-创建环境： conda create --name FA_generation python=3.6
+-激活环境： conda activate FA_generation
+-依赖库安装： pip install -r requirements.txt
+
+
+### 1. Train/Test (Only CycleGAN)
+
+- Train the model :
+```
+python train.py --dataroot ./datasets/FFA_detect --name FA_detect_cycle --model cycle_gan
+
+```
+
+- Test the model:
+```
+python test.py --dataroot ./datasets/FFA_detect --name FA_detect_cycle --model cycle_gan
+
+```
+
+### 2. Train/Test (CycleGAN + CBAM)
+
+- Train the model :
+```
+python train.py --dataroot ./datasets/FFA_detect --name FA_detect_CBAM --model cycle_gan --netG attention_resnet_9blocks
+
+```
+
+- Test the model:
+```
+python test.py --dataroot ./datasets/FFA_detect --name FA_detect_CBAM --model cycle_gan --netG attention_resnet_9blocks
+
+```
+
+### 3. Train/Test (CycleGAN + CBAM + cam_mask loss) (Final Model!!!)
+
+- Train the model :
+```
+python train.py --dataroot ./datasets/FFA_detect --name FA_detect_CAM --model cycle_gan_cam --netG attention_resnet_9blocks --lambda_mask 10.0
+
+```
+
+- Test the model:
+```
+python test.py --dataroot ./datasets/FFA_detect --name FA_detect_CAM --model cycle_gan_cam --netG attention_resnet_9blocks --lambda_mask 10.0
+
+```
+
+
+
+
+
+
+
+
+
